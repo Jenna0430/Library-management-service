@@ -31,7 +31,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install PHP dependencies
-RUN composer install 
+RUN composer install --no-scripts --no-interaction --prefer-dist
 
 
 # Fix permissions
