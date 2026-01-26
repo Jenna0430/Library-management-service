@@ -4,8 +4,5 @@ node_modules
 vendor
 var/cache
 var/log
-.env.local
-.env
-.env.dev
 Dockerfile
 docker-compose.yml

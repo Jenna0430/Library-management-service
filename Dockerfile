@@ -27,7 +27,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy project files
-COPY . .
+COPY . /var/www/html
 
 # Install PHP dependencies
 RUN composer install --no-scripts --no-interaction --prefer-dist
@@ -36,3 +36,4 @@ RUN composer install --no-scripts --no-interaction --prefer-dist
 RUN chown -R www-data:www-data var
 
 EXPOSE 80
+

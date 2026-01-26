@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    env_file: .env
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.1
+    environment:
+      MYSQL_ROOT_PASSWORD: pass_word
+      MYSQL_DATABASE: Library
+    volumes:
+      - database_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  database_data:
