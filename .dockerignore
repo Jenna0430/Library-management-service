@@ -6,4 +6,5 @@ var/cache
 var/log
 Dockerfile
 docker-compose.yml
+.env
 
