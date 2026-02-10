@@ -34,6 +34,10 @@ db-shell:
 db-create:
 	docker compose exec app php bin/console doctrine:database:create --if-not-exists
 
+# Load fixtures
+load-data:
+	docker compose exec app php bin/console doctrine:fixtures:load
+
 # Run migrations
 migrate:
 	docker compose exec app php bin/console doctrine:migrations:migrate --no-interaction
@@ -41,6 +45,10 @@ migrate:
 # Generate a new migration
 migration-diff:
 	docker compose exec app php bin/console doctrine:migrations:diff
+
+# Update the database schema to match entities (DANGEROUS – use with caution)
+schema-update:
+	docker compose exec app php bin/console doctrine:schema:update --force
 
 # Validate schema vs entities
 schema-validate:

@@ -19,6 +19,29 @@ Doctrine ORM & Migrations – Database management
 Makefile – Command simplification
 
 
+🚀 Project Setup 
+
+Clone the repository:
+    git clone <https://github.com/Jenna0430/Library-management-service.git>
+    cd Library-management-service
+
+Build and start the containers:
+    make up-build
+
+Load data into the database:
+    make load-data    
+
+Run migrations:
+    make migrate
+
+Generate migrations (if not already generated):
+    make migration-diff
+
+Access the application in your browser:
+    http://localhost
+
+
+
 📁 Project Structure
 Library/
 ├── bin/
@@ -81,20 +104,3 @@ MySQL (Library database)
 - No local services are required
 
 
-🚀 Project Setup 
-
-Clone the repository:
-    git clone <https://github.com/Jenna0430/Library-management-service.git>
-    cd Library-management-service
-
-Build and start the containers:
-    make up-build
-
-Run migrations:
-    make migrate
-
-Generate migrations (if not already generated):
-    make migration-diff
-
-Access the application in your browser:
-    http://localhost
