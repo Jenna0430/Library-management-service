@@ -1,48 +1,61 @@
-Library Management Service
+# Library Management Service
 
-📘 Project Overview
+## 📘 Project Overview
 
 The Library Management Service is a backend application designed to manage a library system. It allows for the management of books, users, and related library operations. The project is fully Dockerized, meaning anyone can run it without installing PHP, Nginx, or MySQL locally.
 
-🧱 Tech Stack
+---
 
-PHP (Symfony) – Application framework
+## 🧱 Tech Stack
 
-MySQL 8.1 – Database
+- **PHP (Symfony)** – Application framework
+- **MySQL 8.1** – Database
+- **Nginx** – Web server / reverse proxy
+- **Docker & Docker Compose** – Containerization
+- **Doctrine ORM & Migrations** – Database management
+- **Makefile** – Command simplification
 
-Nginx – Web server / reverse proxy
+---
 
-Docker & Docker Compose – Containerization
+## 🚀 Project Setup
 
-Doctrine ORM & Migrations – Database management
+### 1. Clone the repository
+```bash
+git clone https://github.com/Jenna0430/Library-management-service.git
+cd Library-management-service
+```
 
-Makefile – Command simplification
+### 2. Build and start the containers
+```bash
+make up-build
+```
 
+### 3. Load data into the database
+```bash
+make load-data
+```
 
-🚀 Project Setup 
+### 4. Run migrations
+```bash
+make migrate
+```
 
-Clone the repository:
-    git clone <https://github.com/Jenna0430/Library-management-service.git>
-    cd Library-management-service
+### 5. Generate migrations (if not already generated)
+```bash
+make migration-diff
+```
 
-Build and start the containers:
-    make up-build
+### 6. Access the application
 
-Load data into the database:
-    make load-data    
+Open your browser and navigate to:
+```
+http://localhost
+```
 
-Run migrations:
-    make migrate
+---
 
-Generate migrations (if not already generated):
-    make migration-diff
-
-Access the application in your browser:
-    http://localhost
-
-
-
-📁 Project Structure
+## 📁 Project Structure
+```
 Library/
 ├── bin/
 │   └── console                 # Symfony CLI (commands, migrations, cache, etc.)
@@ -53,54 +66,57 @@ Library/
 │   └── services.yaml           # Service container configuration
 │
 ├── migrations/
-│   └── Version*.php             # Doctrine database migrations
+│   └── Version*.php            # Doctrine database migrations
 │
 ├── nginx/
-│   └── default.conf             # Nginx virtual host configuration
+│   └── default.conf            # Nginx virtual host configuration
 │
 ├── public/
-│   └── index.php                # Application entry point
+│   └── index.php               # Application entry point
 │
 ├── src/
-│   ├── Controller/              # Application controllers (HTTP endpoints)
-│   ├── DataFixtures/            # Database seed data
-│   ├── Entity/                  # Doctrine entities (database models)
-│   ├── Repository/              # Database query logic
-│   └── Kernel.php               # Symfony application kernel
+│   ├── Controller/             # Application controllers (HTTP endpoints)
+│   ├── DataFixtures/           # Database seed data
+│   ├── Entity/                 # Doctrine entities (database models)
+│   ├── Repository/             # Database query logic
+│   └── Kernel.php              # Symfony application kernel
 │
 ├── var/
-│   ├── cache/                   # Cache files (auto-generated)
-│   └── log/                     # Application logs
+│   ├── cache/                  # Cache files (auto-generated)
+│   └── log/                    # Application logs
 │
-├── vendor/
-│   └── (Composer dependencies)  # Auto-generated, not committed manually
+├── vendor/                     # Composer dependencies (auto-generated)
 │
-├── .dockerignore                # Files ignored by Docker build
-├── .editorconfig                # Code style rules
-├── .env                         # Environment variables (DB, APP_ENV, etc.)
-├── .gitignore                   # Git ignored files
-├── composer.json                # PHP dependencies definition
-├── composer.lock                # Locked dependency versions
-├── docker-compose.yml           # Multi-container Docker setup
-├── Dockerfile                   # PHP application image definition
-├── Makefile                     # Shortcut commands (build, up, down, migrate)
-├── README.md                    # Project documentation
-└── symfony.lock                 # Symfony recipe lock file
+├── .dockerignore               # Files ignored by Docker build
+├── .editorconfig               # Code style rules
+├── .env                        # Environment variables (DB, APP_ENV, etc.)
+├── .gitignore                  # Git ignored files
+├── composer.json               # PHP dependencies definition
+├── composer.lock               # Locked dependency versions
+├── docker-compose.yml          # Multi-container Docker setup
+├── Dockerfile                  # PHP application image definition
+├── Makefile                    # Shortcut commands (build, up, down, migrate)
+├── README.md                   # Project documentation
+└── symfony.lock                # Symfony recipe lock file
+```
 
+---
 
-🐳 Docker Architecture
+## 🐳 Docker Architecture
+```
 Browser
-↓
+   ↓
 Nginx (port 80)
-↓
+   ↓
 App (PHP / Symfony)
-↓
+   ↓
 MySQL (Library database)
 
+
+```
+
+**Key Points:**
+
 - Only Nginx is exposed to the host machine
-
 - The application and database communicate internally via Docker networking
-
 - No local services are required
-
-
